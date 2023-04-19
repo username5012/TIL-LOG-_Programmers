@@ -1,3 +1,4 @@
+# 길이 구하는 공식
 def length(dots):
     if len(dots) >= 2:
         length = len(dots) -1
@@ -6,7 +7,6 @@ def length(dots):
 
     return length
         
- 
 
 def solution(lines):
     answer = 0
@@ -15,6 +15,7 @@ def solution(lines):
     B = []
     C = []
     
+    # 각 lines에 포함되는 dots 원소 정리 (겹치는 부분을 알아내기 위해)
     
     for i in range (lines[0][0], lines[0][1]+1):
         A += [i]
@@ -25,6 +26,9 @@ def solution(lines):
         
     print(A, B, C)
     
+    
+    # 겹치는 부분 확인
+    
     AB = set(A)&set(B)
     BC = set(B)&set(C)
     CA = set(C)&set(A)
@@ -32,6 +36,8 @@ def solution(lines):
     print(AB, BC, CA)
     print(AB&BC, BC&CA, CA&AB)
 
+    
+    # 겹치는 선분인 AB, BC, CA의 길이를 더한 다음 | AB, BC, CA끼리 겹치는 부분의 길이를 빼고, | AB, BC, CA 모두 겹치는 부분의 길이를 더해줌.
     
     answer = length(AB) + length(BC) + length(CA) - length(AB&BC) - length(BC&CA) - length(CA&AB) + length(AB&BC&CA)
     
@@ -42,6 +48,8 @@ def solution(lines):
     
     
     return answer
+
+
 
 #     A = []
 #     B = []
